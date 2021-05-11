@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from '../asserts/ProductPreview.module.css'
+import classes from '../asserts/css/ProductPreview.module.css'
 
 
 const ProductReview = (props) => {

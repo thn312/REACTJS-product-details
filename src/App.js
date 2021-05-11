@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ProductPreview from './components/ProductReview';
 import ProductDetails from './components/ProductDetails';
 import TopBar from './components/TopBar';
-import classes from './asserts/App.module.css';
+import classes from './asserts/css/App.module.css';
 import ProductData from './components/ProductData';
 
 

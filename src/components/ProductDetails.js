@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from '../asserts/ProductDetails.module.css';
+import classes from '../asserts/css/ProductDetails.module.css';
 import ProductData from './ProductData';
 
 const ProductDetails = (props) => {
