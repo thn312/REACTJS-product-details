@@ -8,9 +8,21 @@ import ProductData from './components/ProductData';
 
 function App() {
 
-    const [productData, setproductData] = useState(ProductData);
+    const [productData] = useState(ProductData);
+    const [posCurrentPreview, setPosCurrentPreview] = useState(0);
+    const [showHeartBeat, setShowHeartBeat] = useState(0);
 
+    const onColorOptionClick = (pos) => {
+        setPosCurrentPreview(() => {
+            return pos;
+        })
+    }
 
+    const onFeatureListClick = (pos) => {
+        setShowHeartBeat(() => {
+            return pos;
+        })
+    }
     return (
         <div className="App">
             <header className="App-header">
@@ -19,9 +31,18 @@ function App() {
 
 
             <div className={classes.MainContainer}>
-                <ProductPreview />
+                <ProductPreview
+                    currentPreviewImage={productData.colorOptions[posCurrentPreview].imageUrl}
+                    showHeartBeat={showHeartBeat}
+
+                />
+
                 <ProductDetails
                     data={productData}
+                    onColorOptionClick={onColorOptionClick}
+                    posCurrentPreview={posCurrentPreview}
+                    showHeartBeat={showHeartBeat}
+                    onFeatureListClick={onFeatureListClick}
                 />
             </div>
         </div>

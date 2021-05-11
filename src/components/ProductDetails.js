@@ -1,62 +1,60 @@
 import React from 'react'
 import classes from '../asserts/css/ProductDetails.module.css';
-import ProductData from './ProductData';
 
 const ProductDetails = (props) => {
-    console.log(props)
+
+    const colorOptions = props.data.colorOptions.map((item, index) => {
+        return (
+            <img key={index}
+                className={[classes.ProductImage, index === props.posCurrentPreview && classes.SelectedProductImage].join(' ')}
+                src={item.imageUrl}
+                alt={item.styleName}
+                onClick={() => props.onColorOptionClick(index)}
+            />
+        )
+    })
+
+
+    const featureList = props.data.featureList.map((item, index) => {
+        return (
+            <button
+                key={index}
+                className={[classes.FeatureItem, index === props.showHeartBeat && classes.SelectedFeatureItem].join(' ')}
+                onClick={() => props.onFeatureListClick(index)}
+            >
+                {item}
+            </button>
+        )
+    })
+
+    // console.log(props.data)
     return (
-        <div>
+        < div >
             <div className={classes.ProductData}>
                 <h1 className={classes.ProductTitle}>
-                    {ProductData.title}
+                    {props.data.title}
                 </h1>
                 <p className={classes.ProductDescription}>
-                    {ProductData.description}
+                    {props.data.description}
                 </p>
 
                 <h3 className={classes.SelectionHeading}>
                     Select Color
-                    </h3>
+                </h3>
                 <div>
-                    <img
-                        className={[classes.ProductImage, classes.SelectedProductImage].join(' ')}
-                        src="https://imgur.com/PTgQlim.png"
-                        alt="Red Strap"
-                    />
-                    <img
-                        className={classes.ProductImage}
-                        src="https://imgur.com/Mplj1YR.png"
-                        alt="Blue Strap"
-                    />
-                    <img
-                        className={classes.ProductImage}
-                        src="https://imgur.com/xSIK4M8.png"
-                        alt="Purple Strap"
-                    />
-                    <img
-                        className={classes.ProductImage}
-                        src="https://imgur.com/iOeUBV7.png"
-                        alt="Black Strap"
-                    />
+                    {colorOptions}
                 </div>
 
                 <h3 className={classes.SelectionHeading}>
                     Features
-                    </h3>
+                </h3>
                 <div>
-                    <button
-                        className={[classes.FeatureItem, classes.SelectedFeatureItem].join(' ')}>
-                        Time
-                        </button>
-                    <button
-                        className={classes.FeatureItem}>
-                        Heart Rate
-                        </button>
+                    {featureList}
                 </div>
 
-                <button className={classes.PrimaryButton}>Buy Now</button>
+                <button className={classes.PrimaryButton} onClick={() => window.open("https://www.facebook.com/thn312", "_blank")}>Buy Now</button>
             </div>
-        </div>
+        </div >
     )
 }
 
